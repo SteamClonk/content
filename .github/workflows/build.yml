@@ -8,12 +8,12 @@ defaults:
 
 jobs:
   Autobuild:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Set autocrlf
         run: git config --global core.autocrlf true
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: "Get c4group executable"
         run: |

@@ -1,6 +1,5 @@
 C4GROUP:=c4group
 ZIP=zip
-PACK_CMD:=cp -r SRC TARGET && $(C4GROUP) TARGET -p
 ZIP_CMD:=$(ZIP) -n c4f:c4g:c4d:c4s -j TARGET SRCS
 
 PACKS:=$(wildcard *.c4?)
@@ -17,7 +16,7 @@ packed/.exists: Makefile
 
 packed/%: % packed/.exists
 	$(RM) -r $@
-	$(subst TARGET,$@,$(subst SRC,$<,$(PACK_CMD)))
+	mkdir $@_tmp && cp -r $< $@_tmp/$< && cd $@_tmp && $(C4GROUP) $< -p  &&  mv $< ../ && cd ../.. && rm -rf $@_tmp 
 
 $(ARCHIVE): $(PACKED_PACKS) $(LICENSES)
 	$(RM) $@
