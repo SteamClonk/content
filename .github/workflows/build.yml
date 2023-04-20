@@ -32,7 +32,13 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: sc-content
-          path: packed/sc_content.zip
+          path: |
+            packed/*.c4f
+            packed/*.c4g
+            packed/*.c4d
+            packed/*.c4s
+            clonk_content_license.txt
+            clonk_trademark_license.txt
       - name: "Release"
         uses: softprops/action-gh-release@v1
         if: ${{ env.IS_RELEASE == 'true' }}
