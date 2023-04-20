@@ -5,7 +5,7 @@ ZIP_CMD:=$(ZIP) -n c4f:c4g:c4d:c4s -j TARGET SRCS
 
 PACKS:=$(wildcard *.c4?)
 PACKED_PACKS:=$(patsubst %,packed/%,$(PACKS))
-ARCHIVE:=packed/lc_content.zip
+ARCHIVE:=packed/sc_content.zip
 LICENSES:=clonk_content_license.txt clonk_trademark_license.txt
 
 .PHONY: all clean

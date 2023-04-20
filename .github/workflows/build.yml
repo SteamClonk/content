@@ -1,9 +1,6 @@
 name: Autobuild
 
-on:
-  push:
-    tags: '*'
-    branches-ignore: '*'
+on: [push, pull_request]
 
 defaults:
   run:
@@ -29,7 +26,10 @@ jobs:
           rm packed/.exists
           cd packed
           ../updates/make_group_updates.sh
-
+      - uses: actions/upload-artifact@v3
+        with:
+          name: sc-content
+          path: packed/sc_content.zip
       - name: "Release"
         uses: softprops/action-gh-release@v1
         with:
