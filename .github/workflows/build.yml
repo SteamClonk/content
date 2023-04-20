@@ -29,16 +29,19 @@ jobs:
           cd packed
 # We don't need c4u update files right now, we do a fresh release
 #          ../updates/make_group_updates.sh
+      - name: Prepare for package
+        run: |
+          mkdir target
+          cp packed/*.c4f target/
+          cp packed/*.c4g target/
+          cp packed/*.c4d target/
+          cp packed/*.c4s target/
+          cp clonk_content_license.txt target/
+          cp clonk_trademark_license.txt target/
       - uses: actions/upload-artifact@v3
         with:
           name: sc-content
-          path: |
-            packed/*.c4f
-            packed/*.c4g
-            packed/*.c4d
-            packed/*.c4s
-            clonk_content_license.txt
-            clonk_trademark_license.txt
+          path: target
       - name: "Release"
         uses: softprops/action-gh-release@v1
         if: ${{ env.IS_RELEASE == 'true' }}
