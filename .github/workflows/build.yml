@@ -35,7 +35,7 @@ jobs:
           cp packed/*.c4f target/
           cp packed/*.c4g target/
           cp packed/*.c4d target/
-          cp packed/*.c4s target/
+          cp packed/*.c4s target/ || true
           cp clonk_content_license.txt target/
           cp clonk_trademark_license.txt target/
       - uses: actions/upload-artifact@v3
